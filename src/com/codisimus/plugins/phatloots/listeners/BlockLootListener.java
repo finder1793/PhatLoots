@@ -34,7 +34,7 @@ public class BlockLootListener implements Listener {
 
         int enchantBonus = 0;
         if (player.getInventory().getItemInMainHand() != null && PhatLootsConfig.blockLootEnchantBonus) {
-            enchantBonus = player.getInventory().getItemInMainHand().getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS);
+            enchantBonus = player.getInventory().getItemInMainHand().getEnchantmentLevel(Enchantment.FORTUNE);
         }
 
         LootBundle bundle = phatLoot.rollForLoot(enchantBonus);

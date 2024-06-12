@@ -52,46 +52,46 @@ public class Item extends Loot {
     private static final String FALL_DEFENSE = "<falldef>";
     /* ENCHANTMENTS */
     private static final Enchantment[] ARMOR_ENCHANTMENTS = {
-        Enchantment.PROTECTION_ENVIRONMENTAL, Enchantment.PROTECTION_FIRE,
-        Enchantment.PROTECTION_EXPLOSIONS, Enchantment.PROTECTION_PROJECTILE,
-        Enchantment.THORNS, Enchantment.DURABILITY, Enchantment.MENDING
+        Enchantment.PROTECTION, Enchantment.FIRE_PROTECTION,
+        Enchantment.BLAST_PROTECTION, Enchantment.PROJECTILE_PROTECTION,
+        Enchantment.THORNS, Enchantment.UNBREAKING, Enchantment.MENDING
     };
     private static final Enchantment[] SWORD_ENCHANTMENTS = {
-        Enchantment.DAMAGE_ALL, Enchantment.DAMAGE_UNDEAD,
-        Enchantment.DAMAGE_ARTHROPODS, Enchantment.KNOCKBACK,
-        Enchantment.FIRE_ASPECT, Enchantment.LOOT_BONUS_MOBS,
-        Enchantment.DURABILITY, Enchantment.MENDING
+        Enchantment.SHARPNESS, Enchantment.SMITE,
+        Enchantment.BANE_OF_ARTHROPODS, Enchantment.KNOCKBACK,
+        Enchantment.FIRE_ASPECT, Enchantment.LOOTING,
+        Enchantment.UNBREAKING, Enchantment.MENDING
     };
     private static final Enchantment[] AXE_ENCHANTMENTS = {
-        Enchantment.DAMAGE_ALL, Enchantment.DAMAGE_UNDEAD,
-        Enchantment.DAMAGE_ARTHROPODS, Enchantment.KNOCKBACK,
-        Enchantment.FIRE_ASPECT, Enchantment.LOOT_BONUS_MOBS,
-        Enchantment.DURABILITY, Enchantment.MENDING
+        Enchantment.SHARPNESS, Enchantment.SMITE,
+        Enchantment.BANE_OF_ARTHROPODS, Enchantment.KNOCKBACK,
+        Enchantment.FIRE_ASPECT, Enchantment.LOOTING,
+        Enchantment.UNBREAKING, Enchantment.MENDING
     };
     private static final Enchantment[] BOW_ENCHANTMENTS = {
-        Enchantment.ARROW_DAMAGE, Enchantment.ARROW_KNOCKBACK,
-        Enchantment.ARROW_FIRE, Enchantment.ARROW_INFINITE,
-        Enchantment.DURABILITY, Enchantment.MENDING
+        Enchantment.POWER, Enchantment.PUNCH,
+        Enchantment.FLAME, Enchantment.INFINITY,
+        Enchantment.UNBREAKING, Enchantment.MENDING
     };
     // Added all the crossbow auto enchantments
     private static final Enchantment[] CROSSBOW_ENCHANTMENTS = {
             Enchantment.MULTISHOT, Enchantment.PIERCING,
-            Enchantment.QUICK_CHARGE, Enchantment.DURABILITY,
+            Enchantment.QUICK_CHARGE, Enchantment.UNBREAKING,
             Enchantment.MENDING
     };
     // Added all the fishing rod auto enchantments
     private static final Enchantment[] FISHING_ROD_ENCHANTMENTS = {
-            Enchantment.LURE, Enchantment.LUCK,
-            Enchantment.MENDING, Enchantment.DURABILITY
+            Enchantment.LURE, Enchantment.LUCK_OF_THE_SEA,
+            Enchantment.MENDING, Enchantment.UNBREAKING
     };
     private static final Enchantment[] PICKAXE_ENCHANTMENTS = {
-        Enchantment.DIG_SPEED, Enchantment.DURABILITY, Enchantment.MENDING
+        Enchantment.EFFICIENCY, Enchantment.UNBREAKING, Enchantment.MENDING
     };
     private static final Enchantment[] SPADE_ENCHANTMENTS = {
-        Enchantment.DIG_SPEED, Enchantment.DURABILITY, Enchantment.MENDING
+        Enchantment.EFFICIENCY, Enchantment.UNBREAKING, Enchantment.MENDING
     };
     private static final Enchantment[] HOE_ENCHANTMENTS = {
-        Enchantment.DURABILITY, Enchantment.MENDING
+        Enchantment.UNBREAKING, Enchantment.MENDING
     };
     /* MATERIALS */
     private static final EnumSet<Material> ARMOR_MATERIAL_SET = EnumSet.of(
@@ -495,8 +495,8 @@ public class Item extends Loot {
                         break;
                     case DEFENSE:
                         int amount = getBaseArmor(clone.getType());
-                        if (clone.containsEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL)) {
-                            int lvl = clone.getEnchantments().get(Enchantment.PROTECTION_ENVIRONMENTAL);
+                        if (clone.containsEnchantment(Enchantment.PROTECTION)) {
+                            int lvl = clone.getEnchantments().get(Enchantment.PROTECTION);
                             int epf = (int) Math.floor((6 + lvl * lvl) * 0.75 / 3);
                             int low = amount + (int) Math.ceil(epf / 2);
                             int high = amount + epf;
@@ -506,8 +506,8 @@ public class Item extends Loot {
                         }
                         break;
                     case FIRE_DEFENSE:
-                        if (clone.containsEnchantment(Enchantment.PROTECTION_FIRE)) {
-                            int lvl = clone.getEnchantments().get(Enchantment.PROTECTION_FIRE);
+                        if (clone.containsEnchantment(Enchantment.FIRE_PROTECTION)) {
+                            int lvl = clone.getEnchantments().get(Enchantment.FIRE_PROTECTION);
                             int epf = (int) Math.floor((6 + lvl * lvl) * 1.25 / 3);
                             int low = (int) Math.ceil(epf / 2);
                             int high = epf;
@@ -517,8 +517,8 @@ public class Item extends Loot {
                         }
                         break;
                     case RANGE_DEFENSE:
-                        if (clone.containsEnchantment(Enchantment.PROTECTION_PROJECTILE)) {
-                            int lvl = clone.getEnchantments().get(Enchantment.PROTECTION_PROJECTILE);
+                        if (clone.containsEnchantment(Enchantment.PROJECTILE_PROTECTION)) {
+                            int lvl = clone.getEnchantments().get(Enchantment.PROJECTILE_PROTECTION);
                             int epf = (int) Math.floor((6 + lvl * lvl) * 1.5 / 3);
                             int low = (int) Math.ceil(epf / 2);
                             int high = epf;
@@ -528,8 +528,8 @@ public class Item extends Loot {
                         }
                         break;
                     case BLAST_DEFENSE:
-                        if (clone.containsEnchantment(Enchantment.PROTECTION_EXPLOSIONS)) {
-                            int lvl = clone.getEnchantments().get(Enchantment.PROTECTION_EXPLOSIONS);
+                        if (clone.containsEnchantment(Enchantment.BLAST_PROTECTION)) {
+                            int lvl = clone.getEnchantments().get(Enchantment.BLAST_PROTECTION);
                             int epf = (int) Math.floor((6 + lvl * lvl) * 1.5 / 3);
                             int low = (int) Math.ceil(epf / 2);
                             int high = epf;
@@ -539,8 +539,8 @@ public class Item extends Loot {
                         }
                         break;
                     case FALL_DEFENSE:
-                        if (clone.containsEnchantment(Enchantment.PROTECTION_FALL)) {
-                            int lvl = clone.getEnchantments().get(Enchantment.PROTECTION_FALL);
+                        if (clone.containsEnchantment(Enchantment.FEATHER_FALLING)) {
+                            int lvl = clone.getEnchantments().get(Enchantment.FEATHER_FALLING);
                             int epf = (int) Math.floor((6 + lvl * lvl) * 2.5 / 3);
                             int low = (int) Math.ceil(epf / 2);
                             int high = epf;
@@ -561,8 +561,8 @@ public class Item extends Loot {
                     case DAMAGE:
                         int baseLow = 1;
                         int baseHigh = 10;
-                        if (clone.containsEnchantment(Enchantment.DAMAGE_ALL)) {
-                            int lvl = clone.getEnchantments().get(Enchantment.ARROW_DAMAGE);
+                        if (clone.containsEnchantment(Enchantment.SHARPNESS)) {
+                            int lvl = clone.getEnchantments().get(Enchantment.POWER);
                             double bonus = lvl == 0
                                     ? 0
                                     : 0.25;
@@ -575,7 +575,7 @@ public class Item extends Loot {
                         }
                         break;
                     case FIRE:
-                        if (clone.containsEnchantment(Enchantment.ARROW_FIRE)) {
+                        if (clone.containsEnchantment(Enchantment.FLAME)) {
                             itr.set(fireString.replace("<amount>", "4"));
                         } else {
                             itr.remove();
@@ -593,8 +593,8 @@ public class Item extends Loot {
                     case DAMAGE:
                         int baseLow = getBaseDamage(clone.getType());
                         int baseHigh = (int) (baseLow * 1.5D) + 2;
-                        if (clone.containsEnchantment(Enchantment.DAMAGE_ALL)) {
-                            int lvl = clone.getEnchantments().get(Enchantment.DAMAGE_ALL);
+                        if (clone.containsEnchantment(Enchantment.SHARPNESS)) {
+                            int lvl = clone.getEnchantments().get(Enchantment.SHARPNESS);
                             int low = baseLow + lvl;
                             int high = baseHigh + 3 * lvl;
                             itr.set(damageString.replace("<amount>", low + "-" + high));
@@ -603,8 +603,8 @@ public class Item extends Loot {
                         }
                         break;
                     case HOLY:
-                        if (clone.containsEnchantment(Enchantment.DAMAGE_UNDEAD)) {
-                            int lvl = clone.getEnchantments().get(Enchantment.DAMAGE_UNDEAD);
+                        if (clone.containsEnchantment(Enchantment.SMITE)) {
+                            int lvl = clone.getEnchantments().get(Enchantment.SMITE);
                             int low = lvl;
                             int high = 4 * lvl;
                             itr.set(holyString.replace("<amount>", low + "-" + high));
@@ -613,8 +613,8 @@ public class Item extends Loot {
                         }
                         break;
                     case BUG:
-                        if (clone.containsEnchantment(Enchantment.DAMAGE_ARTHROPODS)) {
-                            int lvl = clone.getEnchantments().get(Enchantment.DAMAGE_ARTHROPODS);
+                        if (clone.containsEnchantment(Enchantment.BANE_OF_ARTHROPODS)) {
+                            int lvl = clone.getEnchantments().get(Enchantment.BANE_OF_ARTHROPODS);
                             int low = lvl;
                             int high = 4 * lvl;
                             itr.set(bugString.replace("<amount>", low + "-" + high));
@@ -661,7 +661,7 @@ public class Item extends Loot {
         //Check enchantments based on the Material
         if (ARMOR_MATERIAL_SET.contains(mat)) {
             type = ARMOR;
-            enchantment = Enchantment.PROTECTION_FIRE;
+            enchantment = Enchantment.FIRE_PROTECTION;
             level = getLevel(enchantments, enchantment);
             lore = loreConfig.getString(type + '.' + enchantment.getName() + '.' + level);
             if (lore != null) {
@@ -670,14 +670,14 @@ public class Item extends Loot {
             }
             enchantment = enchantments.containsKey(Enchantment.THORNS)
                           ? Enchantment.THORNS
-                          : Enchantment.DURABILITY;
+                          : Enchantment.UNBREAKING;
             level = getLevel(enchantments, enchantment);
             lore = loreConfig.getString(type + '.' + enchantment.getKey().getKey() + '.' + level);
             if (lore != null) {
                 nameBuilder.insert(0, ' ');
                 nameBuilder.insert(0, lore);
             }
-            enchantment = getTrump(enchantments, Enchantment.PROTECTION_ENVIRONMENTAL, Enchantment.PROTECTION_PROJECTILE, Enchantment.PROTECTION_EXPLOSIONS);
+            enchantment = getTrump(enchantments, Enchantment.PROTECTION, Enchantment.PROJECTILE_PROTECTION, Enchantment.BLAST_PROTECTION);
             level = getLevel(enchantments, enchantment);
             lore = loreConfig.getString(type + '.' + enchantment.getKey().getKey() + '.' + level);
             if (lore != null) {
@@ -686,7 +686,7 @@ public class Item extends Loot {
             }
         } else if (SWORD_MATERIAL_SET.contains(mat)) {
             type = SWORD;
-            enchantment = getTrump(enchantments, Enchantment.DAMAGE_ARTHROPODS, Enchantment.DAMAGE_ALL);
+            enchantment = getTrump(enchantments, Enchantment.BANE_OF_ARTHROPODS, Enchantment.SHARPNESS);
             level = getLevel(enchantments, enchantment);
             lore = loreConfig.getString(type + '.' + enchantment.getKey().getKey() + '.' + level);
             if (lore != null) {
@@ -694,21 +694,21 @@ public class Item extends Loot {
             }
             enchantment = enchantments.containsKey(Enchantment.FIRE_ASPECT)
                           ? Enchantment.FIRE_ASPECT
-                          : Enchantment.DURABILITY;
+                          : Enchantment.UNBREAKING;
             level = getLevel(enchantments, enchantment);
             lore = loreConfig.getString(type + '.' + enchantment.getKey().getKey() + '.' + level);
             if (lore != null) {
                 nameBuilder.insert(0, ' ');
                 nameBuilder.insert(0, lore);
             }
-            enchantment = Enchantment.LOOT_BONUS_MOBS;
+            enchantment = Enchantment.LOOTING;
             level = getLevel(enchantments, enchantment);
             lore = loreConfig.getString(type + '.' + enchantment.getKey().getKey() + '.' + level);
             if (lore != null) {
                 nameBuilder.append(' ');
                 nameBuilder.append(lore);
             }
-            enchantment = getTrump(enchantments, Enchantment.KNOCKBACK, Enchantment.DAMAGE_UNDEAD);
+            enchantment = getTrump(enchantments, Enchantment.KNOCKBACK, Enchantment.SMITE);
             level = getLevel(enchantments, enchantment);
             lore = loreConfig.getString(type + '.' + enchantment.getKey().getKey() + '.' + level);
             if (lore != null) {
@@ -717,7 +717,7 @@ public class Item extends Loot {
             }
         } else if (AXE_MATERIAL_SET.contains(mat)) {
             type = AXE;
-            enchantment = getTrump(enchantments, Enchantment.DAMAGE_ARTHROPODS, Enchantment.DAMAGE_ALL);
+            enchantment = getTrump(enchantments, Enchantment.BANE_OF_ARTHROPODS, Enchantment.SHARPNESS);
             level = getLevel(enchantments, enchantment);
             lore = loreConfig.getString(type + '.' + enchantment.getKey().getKey() + '.' + level);
             if (lore != null) {
@@ -725,21 +725,21 @@ public class Item extends Loot {
             }
             enchantment = enchantments.containsKey(Enchantment.FIRE_ASPECT)
                           ? Enchantment.FIRE_ASPECT
-                          : Enchantment.DURABILITY;
+                          : Enchantment.UNBREAKING;
             level = getLevel(enchantments, enchantment);
             lore = loreConfig.getString(type + '.' + enchantment.getKey().getKey() + '.' + level);
             if (lore != null) {
                 nameBuilder.insert(0, ' ');
                 nameBuilder.insert(0, lore);
             }
-            enchantment = Enchantment.LOOT_BONUS_MOBS;
+            enchantment = Enchantment.LOOTING;
             level = getLevel(enchantments, enchantment);
             lore = loreConfig.getString(type + '.' + enchantment.getKey().getKey() + '.' + level);
             if (lore != null) {
                 nameBuilder.append(' ');
                 nameBuilder.append(lore);
             }
-            enchantment = getTrump(enchantments, Enchantment.KNOCKBACK, Enchantment.DAMAGE_UNDEAD);
+            enchantment = getTrump(enchantments, Enchantment.KNOCKBACK, Enchantment.SMITE);
             level = getLevel(enchantments, enchantment);
             lore = loreConfig.getString(type + '.' + enchantment.getKey().getKey() + '.' + level);
             if (lore != null) {
@@ -748,13 +748,13 @@ public class Item extends Loot {
             }
         } else if (PICKAXE_MATERIAL_SET.contains(mat)) {
             type = PICKAXE;
-            enchantment = Enchantment.DIG_SPEED;
+            enchantment = Enchantment.EFFICIENCY;
             level = getLevel(enchantments, enchantment);
             lore = loreConfig.getString(type + '.' + enchantment.getKey().getKey() + '.' + level);
             if (lore != null) {
                 nameBuilder.replace(nameBuilder.length() - 7, nameBuilder.length(), lore);
             }
-            enchantment = Enchantment.DURABILITY;
+            enchantment = Enchantment.UNBREAKING;
             level = getLevel(enchantments, enchantment);
             lore = loreConfig.getString(type + '.' + enchantment.getKey().getKey() + '.' + level);
             if (lore != null) {
@@ -763,13 +763,13 @@ public class Item extends Loot {
             }
         } else if (SPADE_MATERIAL_SET.contains(mat)) {
             type = SPADE;
-            enchantment = Enchantment.DIG_SPEED;
+            enchantment = Enchantment.EFFICIENCY;
             level = getLevel(enchantments, enchantment);
             lore = loreConfig.getString(type + '.' + enchantment.getKey().getKey() + '.' + level);
             if (lore != null) {
                 nameBuilder.replace(nameBuilder.length() - 6, nameBuilder.length(), lore);
             }
-            enchantment = Enchantment.DURABILITY;
+            enchantment = Enchantment.UNBREAKING;
             level = getLevel(enchantments, enchantment);
             lore = loreConfig.getString(type + '.' + enchantment.getKey().getKey() + '.' + level);
             if (lore != null) {
@@ -778,7 +778,7 @@ public class Item extends Loot {
             }
         } else if (HOE_MATERIAL_SET.contains(mat)) {
             type = HOE;
-            enchantment = Enchantment.DURABILITY;
+            enchantment = Enchantment.UNBREAKING;
             level = getLevel(enchantments, enchantment);
             lore = loreConfig.getString(type + '.' + enchantment.getKey().getKey() + '.' + level);
             if (lore != null) {
@@ -787,34 +787,34 @@ public class Item extends Loot {
             }
         } else if (mat == Material.BOW) {
             type = BOW;
-            enchantment = Enchantment.ARROW_DAMAGE;
+            enchantment = Enchantment.POWER;
             level = getLevel(enchantments, enchantment);
             lore = loreConfig.getString(type + '.' + enchantment.getKey().getKey() + '.' + level);
             if (lore != null) {
                 nameBuilder.replace(0, 3, lore);
             }
-            enchantment = Enchantment.DURABILITY;
+            enchantment = Enchantment.UNBREAKING;
             level = getLevel(enchantments, enchantment);
             lore = loreConfig.getString(type + '.' + enchantment.getKey().getKey() + '.' + level);
             if (lore != null) {
                 nameBuilder.insert(0, ' ');
                 nameBuilder.insert(0, lore);
             }
-            enchantment = Enchantment.ARROW_FIRE;
+            enchantment = Enchantment.FLAME;
             level = getLevel(enchantments, enchantment);
             lore = loreConfig.getString(type + '.' + enchantment.getKey().getKey() + '.' + level);
             if (lore != null) {
                 nameBuilder.insert(0, ' ');
                 nameBuilder.insert(0, lore);
             }
-            enchantment = Enchantment.ARROW_INFINITE;
+            enchantment = Enchantment.INFINITY;
             level = getLevel(enchantments, enchantment);
             lore = loreConfig.getString(type + '.' + enchantment.getKey().getKey() + '.' + level);
             if (lore != null) {
                 nameBuilder.append(' ');
                 nameBuilder.append(lore);
             }
-            enchantment = Enchantment.ARROW_KNOCKBACK;
+            enchantment = Enchantment.PUNCH;
             level = getLevel(enchantments, enchantment);
             lore = loreConfig.getString(type + '.' + enchantment.getKey().getKey() + '.' + level);
             if (lore != null) {

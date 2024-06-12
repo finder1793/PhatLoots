@@ -723,7 +723,7 @@ public class PhatLootChest {
         // TNT
         if (material == Material.TNT) {
             block.setType(Material.AIR);
-            TNTPrimed tnt = (TNTPrimed) block.getWorld().spawnEntity(block.getLocation(), EntityType.PRIMED_TNT);
+            TNTPrimed tnt = (TNTPrimed) block.getWorld().spawnEntity(block.getLocation(), EntityType.TNT);
             tnt.setFuseTicks(80);
             return;
         }

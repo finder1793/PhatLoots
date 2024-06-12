@@ -43,7 +43,7 @@ public class FishingListener implements Listener {
         if (event.getCaught() instanceof Item) {
             //Get the looting bonus of the fishing pole
             ItemStack pole = event.getPlayer().getInventory().getItemInMainHand();
-            double lootingBonus = PhatLoot.lootingBonusPerLvl * pole.getEnchantmentLevel(Enchantment.LOOT_BONUS_MOBS);
+            double lootingBonus = PhatLoot.lootingBonusPerLvl * pole.getEnchantmentLevel(Enchantment.LOOTING);
 
             //Change the 'fish' to which ever Item has been looted
             Item fish = (Item) event.getCaught();

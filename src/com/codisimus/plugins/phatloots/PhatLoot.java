@@ -558,7 +558,7 @@ public final class PhatLoot implements ConfigurationSerializable {
         //The looting bonus is determined by the LOOT_BONUS_MOBS enchantment on the weapon
         double lootingBonus = weapon == null
                               ? 0
-                              : lootingBonusPerLvl * weapon.getEnchantmentLevel(Enchantment.LOOT_BONUS_MOBS);
+                              : lootingBonusPerLvl * weapon.getEnchantmentLevel(Enchantment.LOOTING);
 
         //Call the pre-event to be modified
         PreLootEvent preEvent = new PreMobDropLootEvent(mob, player, lootingBonus);
